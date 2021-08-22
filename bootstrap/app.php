@@ -91,7 +91,7 @@ $app->configure('app');
 |
 */
 
-//$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -106,8 +106,8 @@ $app->configure('app');
 |
 */
 
-$app->bind(\Domain\UseCases\User\ICreateUser::class, \Domain\UseCases\User\CreateUser::class);
-$app->bind(\Domain\Repositories\UserRepository::class, \App\Infrastructure\Repositories\UserRepository::class);
+//$app->bind(\Domain\UseCases\User\ICreateUser::class, \Domain\UseCases\User\CreateUser::class);
+//$app->bind(\Domain\Repositories\UserRepository::class, \App\Infrastructure\Repositories\UserRepository::class);
 
 $app->router->group([
     'namespace' => 'Application\Http\Controllers',
