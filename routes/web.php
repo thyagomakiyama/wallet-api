@@ -15,9 +15,11 @@
 
 use Laravel\Lumen\Routing\Router;
 
-$router->get('/', function () use ($router) {
+$router->get('/', function () {
     return response()->json([
         "message" => env('APP_NAME'),
         "status" => "ok"
     ]);
 });
+
+$router->post('user', 'UserController@store');

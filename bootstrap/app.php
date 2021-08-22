@@ -91,7 +91,7 @@ $app->configure('app');
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+//$app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -105,6 +105,9 @@ $app->configure('app');
 | can respond to, as well as the controllers that may handle them.
 |
 */
+
+$app->bind(\Domain\UseCases\User\ICreateUser::class, \Domain\UseCases\User\CreateUser::class);
+$app->bind(\Domain\Repositories\UserRepository::class, \App\Infrastructure\Repositories\UserRepository::class);
 
 $app->router->group([
     'namespace' => 'Application\Http\Controllers',

@@ -44,9 +44,9 @@ class User
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'document_number' => $this->documentNumber,
+            'document_number' => (string) $this->documentNumber,
             'user_type' => $this->userType,
-            'email' => $this->email,
+            'email' => (string) $this->email,
             'password' => $this->password
         ];
     }

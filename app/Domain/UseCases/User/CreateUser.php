@@ -5,7 +5,7 @@ namespace Domain\UseCases\User;
 use Domain\Entities\User;
 use Domain\Repositories\UserRepository;
 
-class CreateUser
+class CreateUser implements ICreateUser
 {
     private UserRepository $repository;
 
@@ -16,6 +16,7 @@ class CreateUser
 
     public function handle(User $user): array
     {
+//        dd($user);
         if ($this->repository->getByEmail($user->getEmail()))
             throw new \DomainException('User already be registered');
 
