@@ -46,9 +46,18 @@ class WalletTest extends TestCase
     public function testDepositWhenValueLessThenZero()
     {
         $this->expectException(\DomainException::class);
-        $this->expectExceptionMessage('Value less than zero');
+        $this->expectExceptionMessage('Deposit value less than zero');
 
         $wallet = new Wallet($this->userId);
         $wallet->deposit(-1.0);
+    }
+
+    public function testWithdrawWhenValueLessThenZero()
+    {
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage('Withdraw value less than zero');
+
+        $wallet = new Wallet($this->userId);
+        $wallet->withdraw(0.0);
     }
 }

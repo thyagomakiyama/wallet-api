@@ -38,6 +38,9 @@ class Wallet
 
     public function withdraw(float $value): void
     {
+        if ($value <= 0)
+            throw new \DomainException('Withdraw value less than zero');
+
         if ($this->balance < $value)
             throw new \DomainException('Insufficient balance');
 
@@ -47,7 +50,7 @@ class Wallet
     public function deposit(float $value): void
     {
         if ($value <= 0)
-            throw new \DomainException('Value less than zero');
+            throw new \DomainException('Deposit value less than zero');
 
         $this->balance = $this->balance + $value;
     }
