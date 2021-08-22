@@ -4,7 +4,7 @@ namespace Domain\UseCases\Transfer;
 
 class SyncTransfer extends Transfer
 {
-    public function handle(float $value, string $payerId, string $payeeId): void
+    public function handle(float $value, string $payerId, string $payeeId): array
     {
         $this->validatePayer($payerId);
 
@@ -19,5 +19,9 @@ class SyncTransfer extends Transfer
             sprintf('User %s transfer %s to you', $payerId, $value),
             $payeeId
         );
+
+        return [
+            'message' => 'success'
+        ];
     }
 }

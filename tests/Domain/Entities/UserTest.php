@@ -16,6 +16,5 @@ class UserTest extends TestCase
 
         $this->assertIsArray($user);
         $this->assertNotEmpty($user['id']);
-        $this->assertNotEquals('password', $user['password']);
     }
 }

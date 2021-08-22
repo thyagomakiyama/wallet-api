@@ -49,10 +49,11 @@ class SyncTransferTest extends TestCase
         $userRepository->shouldReceive('getById')->with($this->userCommon->getId())->andReturn($this->userCommon);
 
         $useCase = new SyncTransfer($userRepository, $walletRepository, $this->notificationRepository, $this->authorizationTransferRepository);
-        $useCase->handle(50.0, $this->userCommon->getId(), $this->userShopkeeper->getId());
+        $response = $useCase->handle(50.0, $this->userCommon->getId(), $this->userShopkeeper->getId());
 
         $this->assertEquals(50.0, $this->userCommonWallet->getBalance());
         $this->assertEquals(50.0, $this->userShopkeeperWallet->getBalance());
+        $this->assertEquals(['message' => 'success'], $response);
     }
 
     public function testErrorTransferWhenPayerIsShopkeeper()

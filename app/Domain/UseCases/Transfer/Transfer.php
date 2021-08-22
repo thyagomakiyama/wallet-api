@@ -27,7 +27,7 @@ abstract class Transfer
         $this->authorizationTransferRepository = $authorizationTransferRepository;
     }
 
-    abstract public function handle(float $value, string $payerId, string $payeeId): void;
+    abstract public function handle(float $value, string $payerId, string $payeeId): array;
 
     protected function validatePayer(string $payerId): void
     {

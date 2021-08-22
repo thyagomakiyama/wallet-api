@@ -16,7 +16,6 @@ class CreateUser implements ICreateUser
 
     public function handle(User $user): array
     {
-//        dd($user);
         if ($this->repository->getByEmail($user->getEmail()))
             throw new \DomainException('User already be registered');
 
