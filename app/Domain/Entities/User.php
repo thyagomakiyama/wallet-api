@@ -61,4 +61,9 @@ class User
         return $this->id;
     }
 
+    public function getType(): string
+    {
+        return $this->userType;
+    }
+
 }
