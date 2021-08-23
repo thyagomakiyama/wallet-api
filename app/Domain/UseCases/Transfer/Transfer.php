@@ -70,7 +70,6 @@ abstract class Transfer implements ITransfer
 
     protected function commitTransfer(Wallet $payerWallet, Wallet $payeeWallet): void
     {
-        $this->walletRepository->updateBalance($payerWallet->getId(), $payerWallet->getBalance());
-        $this->walletRepository->updateBalance($payeeWallet->getId(), $payeeWallet->getBalance());
+        $this->walletRepository->updateBalanceAfterTransfer($payerWallet->getId(), $payerWallet->getBalance(), $payeeWallet->getId(), $payeeWallet->getBalance());
     }
 }

@@ -4,6 +4,8 @@ namespace Infrastructure\Repositories;
 
 use Domain\Entities\Wallet;
 use Domain\Repositories\WalletRepository as InterfaceRepository;
+use Exception;
+use Illuminate\Support\Facades\DB;
 use Infrastructure\Models\Wallet as Model;
 
 class WalletRepository implements InterfaceRepository
@@ -40,9 +42,23 @@ class WalletRepository implements InterfaceRepository
         return $this->toWallet($wallet->toArray());
     }
 
-    public function updateBalance(string $walletId, float $balance): void
+    /**
+     * @throws Exception
+     */
+    public function updateBalanceAfterTransfer(string $walletPayer, float $balancePayer, string $walletPayee, float $balancePayee): void
     {
-        // TODO: Implement updateBalance() method.
+        DB::beginTransaction();
+
+        try {
+            DB::table('wallets')->where('id', $walletPayer)->update(['balance' => $balancePayer]);
+            DB::table('wallets')->where('id', $walletPayee)->update(['balance' => $balancePayee]);
+
+            DB::commit();
+        } catch (Exception $exception) {
+            DB::rollBack();
+
+            throw $exception;
+        }
     }
 
     private function toWallet(array $wallet): Wallet
