@@ -23,9 +23,9 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -105,9 +105,6 @@ $app->register(App\Providers\AppServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
-
-//$app->bind(\Domain\UseCases\User\ICreateUser::class, \Domain\UseCases\User\CreateUser::class);
-//$app->bind(\Domain\Repositories\UserRepository::class, \App\Infrastructure\Repositories\UserRepository::class);
 
 $app->router->group([
     'namespace' => 'Application\Http\Controllers',

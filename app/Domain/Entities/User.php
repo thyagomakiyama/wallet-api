@@ -46,7 +46,8 @@ class User
             'name' => $this->name,
             'document_number' => (string) $this->documentNumber,
             'user_type' => $this->userType,
-            'email' => (string) $this->email
+            'email' => (string) $this->email,
+            'password' => $this->password
         ];
     }
 
@@ -64,5 +65,4 @@ class User
     {
         return $this->userType;
     }
-
 }
