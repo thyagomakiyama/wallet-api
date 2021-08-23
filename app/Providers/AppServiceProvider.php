@@ -2,6 +2,8 @@
 
 namespace Provider;
 
+use Domain\UseCases\Transfer\ITransfer;
+use Domain\UseCases\Transfer\Transfer;
 use Domain\UseCases\Wallet\ICreateWallet;
 use Domain\Repositories\UserRepository;
 use Domain\Repositories\WalletRepository;
@@ -23,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserRepository::class, \Infrastructure\Repositories\UserRepository::class);
         $this->app->bind(ICreateWallet::class, CreateWallet::class);
         $this->app->bind(WalletRepository::class, \Infrastructure\Repositories\WalletRepository::class);
+        $this->app->bind(ITransfer::class, Transfer::class);
     }
 }

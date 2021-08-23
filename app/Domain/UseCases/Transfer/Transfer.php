@@ -9,7 +9,7 @@ use Domain\Repositories\NotificationRepository;
 use Domain\Repositories\UserRepository;
 use Domain\Repositories\WalletRepository;
 
-abstract class Transfer
+abstract class Transfer implements ITransfer
 {
     private UserRepository $userRepository;
     protected WalletRepository $walletRepository;
