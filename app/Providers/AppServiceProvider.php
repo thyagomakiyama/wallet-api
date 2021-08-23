@@ -2,8 +2,10 @@
 
 namespace Provider;
 
+use Domain\Repositories\AuthorizationTransferRepository;
+use Domain\Repositories\NotificationRepository;
 use Domain\UseCases\Transfer\ITransfer;
-use Domain\UseCases\Transfer\Transfer;
+use Domain\UseCases\Transfer\SyncTransfer;
 use Domain\UseCases\Wallet\ICreateWallet;
 use Domain\Repositories\UserRepository;
 use Domain\Repositories\WalletRepository;
@@ -11,6 +13,8 @@ use Domain\UseCases\User\CreateUser;
 use Domain\UseCases\User\ICreateUser;
 use Domain\UseCases\Wallet\CreateWallet;
 use Illuminate\Support\ServiceProvider;
+use Infrastructure\Repositories\AuthorizationTransferAPI;
+use Infrastructure\Repositories\NotificationAPI;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserRepository::class, \Infrastructure\Repositories\UserRepository::class);
         $this->app->bind(ICreateWallet::class, CreateWallet::class);
         $this->app->bind(WalletRepository::class, \Infrastructure\Repositories\WalletRepository::class);
-        $this->app->bind(ITransfer::class, Transfer::class);
+        $this->app->bind(ITransfer::class, SyncTransfer::class);
+        $this->app->bind(NotificationRepository::class, NotificationAPI::class);
+        $this->app->bind(AuthorizationTransferRepository::class, AuthorizationTransferAPI::class);
     }
 }
