@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Providers;
+namespace Provider;
 
-use App\Domain\UseCases\Wallet\ICreateWallet;
+use Domain\UseCases\Wallet\ICreateWallet;
 use Domain\Repositories\UserRepository;
 use Domain\Repositories\WalletRepository;
 use Domain\UseCases\User\CreateUser;
@@ -20,8 +20,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(ICreateUser::class, CreateUser::class);
-        $this->app->bind(UserRepository::class, \App\Infrastructure\Repositories\UserRepository::class);
+        $this->app->bind(UserRepository::class, \Infrastructure\Repositories\UserRepository::class);
         $this->app->bind(ICreateWallet::class, CreateWallet::class);
-        $this->app->bind(WalletRepository::class, \App\Infrastructure\Repositories\WalletRepository::class);
+        $this->app->bind(WalletRepository::class, \Infrastructure\Repositories\WalletRepository::class);
     }
 }

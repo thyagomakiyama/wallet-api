@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\DTO;
+namespace Application\DTO;
 
 use Domain\Entities\Wallet;
 use Illuminate\Http\Request;

@@ -22,7 +22,7 @@ class Wallet
         return [
             'id' => $this->id,
             'balance' => $this->balance,
-            'userId' => $this->userId
+            'user_id' => $this->userId
         ];
     }
 

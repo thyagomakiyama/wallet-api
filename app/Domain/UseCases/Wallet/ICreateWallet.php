@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\UseCases\Wallet;
+namespace Domain\UseCases\Wallet;
 
 use Domain\Entities\Wallet;
 

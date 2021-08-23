@@ -2,8 +2,8 @@
 
 namespace Application\Http\Controllers;
 
-use App\Application\DTO\WalletDTO;
-use App\Domain\UseCases\Wallet\ICreateWallet;
+use Application\DTO\WalletDTO;
+use Domain\UseCases\Wallet\ICreateWallet;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
