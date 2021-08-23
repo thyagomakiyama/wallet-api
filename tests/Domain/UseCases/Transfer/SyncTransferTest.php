@@ -43,7 +43,7 @@ class SyncTransferTest extends TestCase
         $walletRepository = \Mockery::mock(WalletRepository::class);
         $walletRepository->shouldReceive('getByUserId')->with($this->userCommon->getId())->andReturn($this->userCommonWallet);
         $walletRepository->shouldReceive('getByUserId')->with($this->userShopkeeper->getId())->andReturn($this->userShopkeeperWallet);
-        $walletRepository->shouldReceive('updateBalance')->andReturn(null);
+        $walletRepository->shouldReceive('updateBalanceAfterTransfer')->andReturn(null);
 
         $userRepository = \Mockery::mock(UserRepository::class);
         $userRepository->shouldReceive('getById')->with($this->userCommon->getId())->andReturn($this->userCommon);
