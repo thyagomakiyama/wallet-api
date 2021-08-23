@@ -9,7 +9,7 @@ use Faker\Factory;
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use TestCase;
 
-class TransferTest extends TestCase
+class TransferControllerTest extends TestCase
 {
     private string $userCommon;
     private string $userShopkeeper;
