@@ -36,6 +36,11 @@ class Wallet
         return $this->id;
     }
 
+    public function getUserId(): string
+    {
+        return $this->userId;
+    }
+
     public function withdraw(float $value): void
     {
         if ($value <= 0)

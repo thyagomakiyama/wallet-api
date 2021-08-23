@@ -27,13 +27,14 @@ class CreateWalletTest extends TestCase
     {
         $repository = \Mockery::mock(WalletRepository::class);
         $repository->shouldReceive('getById')->andReturns(null);
+        $repository->shouldReceive('getByUserId')->andReturns($this->wallet);
         $repository->shouldReceive('save')->andReturn(null);
 
         $useCase = new CreateWallet($repository);
         $response = $useCase->handle($this->wallet);
 
         $this->assertArrayHasKey('message', $response);
-        $this->assertEquals($response['message'], 'success');
+        $this->assertEquals('success', $response['message']);
     }
 
     public function testCreateWalletWhenAlreadyRegistered()
@@ -44,6 +45,20 @@ class CreateWalletTest extends TestCase
 
         $this->expectException(\DomainException::class);
         $this->expectExceptionMessage('Wallet already registered');
+
+        $useCase = new CreateWallet($repository);
+        $useCase->handle($this->wallet);
+    }
+
+    public function testCreateWalletWhenUserNotFound()
+    {
+        $repository = \Mockery::mock(WalletRepository::class);
+        $repository->shouldReceive('getById')->andReturns(null);
+        $repository->shouldReceive('getByUserId')->andReturns(null);
+        $repository->shouldReceive('save')->andReturn(null);
+
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage('User not found for this wallet');
 
         $useCase = new CreateWallet($repository);
         $useCase->handle($this->wallet);

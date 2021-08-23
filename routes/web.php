@@ -23,3 +23,4 @@ $router->get('/', function () {
 });
 
 $router->post('user', 'UserController@store');
+$router->post('wallet', 'WalletController@store');
