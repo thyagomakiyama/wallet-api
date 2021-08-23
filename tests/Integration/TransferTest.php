@@ -2,8 +2,11 @@
 
 namespace Integration;
 
+use Domain\Repositories\AuthorizationTransferRepository;
+use Domain\Repositories\NotificationRepository;
 use Domain\Repositories\WalletRepository;
 use Faker\Factory;
+use Laravel\Lumen\Testing\DatabaseMigrations;
 use TestCase;
 
 class TransferTest extends TestCase
@@ -11,6 +14,8 @@ class TransferTest extends TestCase
     private string $userCommon;
     private string $userShopkeeper;
     private WalletRepository $walletRepository;
+
+    use DatabaseMigrations;
 
     protected function setUp(): void
     {
