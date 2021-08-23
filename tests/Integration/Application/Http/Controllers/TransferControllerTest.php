@@ -1,9 +1,7 @@
 <?php
 
-namespace Integration;
+namespace Integration\Application\Http\Controllers;
 
-use Domain\Repositories\AuthorizationTransferRepository;
-use Domain\Repositories\NotificationRepository;
 use Domain\Repositories\WalletRepository;
 use Faker\Factory;
 use Laravel\Lumen\Testing\DatabaseMigrations;

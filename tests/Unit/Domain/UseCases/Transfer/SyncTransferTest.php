@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\UseCases\Transfer;
+namespace Unit\Domain\UseCases\Transfer;
 
 use Domain\Entities\User;
 use Domain\Entities\Wallet;
@@ -8,6 +8,7 @@ use Domain\Repositories\AuthorizationTransferRepository;
 use Domain\Repositories\NotificationRepository;
 use Domain\Repositories\UserRepository;
 use Domain\Repositories\WalletRepository;
+use Domain\UseCases\Transfer\SyncTransfer;
 use Domain\ValueObjects\CPF;
 use Domain\ValueObjects\Email;
 use PHPUnit\Framework\TestCase;

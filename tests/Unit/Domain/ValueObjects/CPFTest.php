@@ -1,7 +1,8 @@
 <?php
 
-namespace Domain\ValueObjects;
+namespace Unit\Domain\ValueObjects;
 
+use Domain\ValueObjects\CPF;
 use Faker\Factory;
 use PHPUnit\Framework\TestCase;
 

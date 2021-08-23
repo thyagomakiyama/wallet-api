@@ -1,11 +1,12 @@
 <?php
 
-namespace Domain\UseCases\Wallet;
+namespace Unit\Domain\UseCases\Wallet;
 
 use Domain\Entities\User;
 use Domain\Entities\Wallet;
 use Domain\Repositories\UserRepository;
 use Domain\Repositories\WalletRepository;
+use Domain\UseCases\Wallet\CreateWallet;
 use Domain\ValueObjects\CPF;
 use Domain\ValueObjects\Email;
 use PHPUnit\Framework\TestCase;

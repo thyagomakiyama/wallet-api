@@ -1,7 +1,8 @@
 <?php
 
-namespace Domain\Entities;
+namespace Unit\Domain\Entities;
 
+use Domain\Entities\User;
 use Domain\ValueObjects\CPF;
 use Domain\ValueObjects\Email;
 use PHPUnit\Framework\TestCase;

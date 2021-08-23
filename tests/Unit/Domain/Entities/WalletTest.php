@@ -1,7 +1,9 @@
 <?php
 
-namespace Domain\Entities;
+namespace Unit\Domain\Entities;
 
+use Domain\Entities\User;
+use Domain\Entities\Wallet;
 use Domain\ValueObjects\CPF;
 use Domain\ValueObjects\Email;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +25,7 @@ class WalletTest extends TestCase
         $wallet = new Wallet($this->userId, 100.0);
         $wallet->withdraw(50.0);
 
-        $this->assertEquals($wallet->getBalance(), 50.0);
+        $this->assertEquals(50.0, $wallet->getBalance());
     }
 
     public function testWithdrawWhenInsufficientBalance()
@@ -40,7 +42,7 @@ class WalletTest extends TestCase
         $wallet = new Wallet($this->userId);
         $wallet->deposit(50.0);
 
-        $this->assertEquals($wallet->getBalance(), 50.0);
+        $this->assertEquals(50.0, $wallet->getBalance());
     }
 
     public function testDepositWhenValueLessThenZero()

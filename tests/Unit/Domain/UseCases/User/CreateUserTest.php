@@ -1,9 +1,10 @@
 <?php
 
-namespace Domain\UseCases\User;
+namespace Unit\Domain\UseCases\User;
 
 use Domain\Entities\User;
 use Domain\Repositories\UserRepository;
+use Domain\UseCases\User\CreateUser;
 use Domain\ValueObjects\CPF;
 use Domain\ValueObjects\Email;
 use PHPUnit\Framework\TestCase;

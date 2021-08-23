@@ -1,7 +1,8 @@
 <?php
 
-namespace Domain\ValueObjects;
+namespace Unit\Domain\ValueObjects;
 
+use Domain\ValueObjects\Email;
 use PHPUnit\Framework\TestCase;
 
 class EmailTest extends TestCase
@@ -10,7 +11,7 @@ class EmailTest extends TestCase
     {
         $email = new Email('email@email.com');
 
-        $this->assertEquals($email, 'email@email.com');
+        $this->assertEquals('email@email.com', $email);
     }
 
     public function testEmailShouldBeInvalid()
