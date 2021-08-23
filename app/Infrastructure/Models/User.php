@@ -17,4 +17,8 @@ class User extends Model
         'document_number',
         'user_type'
     ];
+
+    public $incrementing = false;
+
+    public $keyType = 'string';
 }

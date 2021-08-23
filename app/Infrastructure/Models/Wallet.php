@@ -14,4 +14,8 @@ class Wallet extends Model
         'user_id',
         'balance'
     ];
+
+    public $incrementing = false;
+
+    public $keyType = 'string';
 }
