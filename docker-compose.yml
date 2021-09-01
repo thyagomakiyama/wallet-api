@@ -6,17 +6,63 @@ services:
     container_name: mysql
     ports:
       - '3306:3306'
-    expose:
-      - '3306'
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=wallet
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wallet
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - app-network
 
   phpmyadmin:
     image: phpmyadmin
+    container_name: phpmyadmin
     ports:
       - '8080:80'
     environment:
       - PMA_ARBITRARY=1
+    depends_on:
+      - mysql
+    networks:
+      - app-network
 
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./images/nginx/:/etc/nginx/conf.d/
+    depends_on:
+      - mysql
+    networks:
+      - app-network
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+    volumes:
+      - ./:/var/www
+      - ./images/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
