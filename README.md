@@ -9,16 +9,13 @@ O namespace Application representam os inbounds e Infrastructure representam os 
 git clone https://github.com/thyagomakiyama/wallet-api.git -- clonar repositório
 
 cd wallet-api
-cp -p .env.exemple .env
 
-docker-compose up -d -- subir o banco de dados local
-
-composer install -- instalar dependencias do projeto
-
-php -S localhost:8000 -t public -- subir servidor local
+make build
 ```
+Após todas executar os comandos a aplicação estará disponível em localhost
 
 ## Testes
 ```bash
-vendor/bin/phpunit
+make test
 ```
+

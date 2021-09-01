@@ -10,3 +10,6 @@ down:
 
 migrate:
 	@docker exec app php artisan migrate
+
+test:
+	@docker exec app vendor/bin/phpunit
