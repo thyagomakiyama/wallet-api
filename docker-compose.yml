@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 services:
   mysql:
@@ -26,38 +26,19 @@ services:
     networks:
       - app-network
 
-  webserver:
-    image: nginx:alpine
-    container_name: webserver
-    tty: true
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./:/var/www
-      - ./images/nginx/:/etc/nginx/conf.d/
-    depends_on:
-      - mysql
-    networks:
-      - app-network
-
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     container_name: app
-    tty: true
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
     working_dir: /var/www
+    ports:
+      - '8000:80'
     networks:
       - app-network
-    depends_on:
-      - mysql
     volumes:
-      - ./:/var/www
-      - ./images/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./:/var/www/html
 
 networks:
   app-network:
