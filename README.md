@@ -11,6 +11,7 @@ git clone https://github.com/thyagomakiyama/wallet-api.git -- clonar repositóri
 cd wallet-api
 
 make build
+make migrate
 ```
 Após todas executar os comandos a aplicação estará disponível em localhost
 

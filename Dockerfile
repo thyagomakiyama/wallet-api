@@ -21,6 +21,9 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Set working directory
 WORKDIR /var/www/html
 
+COPY . .
+COPY .env.example .env
+
 # Set up locales
 # RUN locale-gen
 
