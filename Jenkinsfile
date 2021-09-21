@@ -1,5 +1,5 @@
 #!groovy
-node('master') {
+node('main') {
     def app
     try {
         stage('Checkout SCM') {
